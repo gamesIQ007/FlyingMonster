@@ -78,6 +78,8 @@ public class EnemyAI : MonoBehaviour
             {
                 enemy.AttackDistanceWeapon(target.transform.position);
             }
+
+            enemy.ActivatePerk();
         }
     }
 

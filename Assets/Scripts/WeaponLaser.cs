@@ -5,9 +5,12 @@
 public class WeaponLaser : MonoBehaviour
 {
     [SerializeField] private int damage;
+    public int Damage => damage;
+
     [SerializeField] private float duration;
     [SerializeField] private float refireTime;
-    [SerializeField] private float refireTimer;
+    
+    private float refireTimer;
 
     private LineRenderer line;
 
@@ -50,6 +53,12 @@ public class WeaponLaser : MonoBehaviour
         line.useWorldSpace = true;
         line.SetPosition(0, enemy.transform.position);
         line.SetPosition(1, endPos);
-        Destroy(line, duration);
+        Destroy(line.gameObject, duration);
+    }
+
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 }

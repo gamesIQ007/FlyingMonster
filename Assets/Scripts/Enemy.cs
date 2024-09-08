@@ -40,12 +40,16 @@ public class Enemy : Destructible
 
     private Rigidbody2D rb;
 
+    private PerkCreateIllusion perk;
+
 
     protected override void Start()
     {
         base.Start();
 
         rb = GetComponent<Rigidbody2D>();
+
+        perk = GetComponent<PerkCreateIllusion>();
     }
 
 
@@ -68,5 +72,18 @@ public class Enemy : Destructible
     public virtual void AttackDistanceWeapon(Vector3 attackPosition)
     {
         weapon.Fire(attackPosition);
+    }
+
+    public void ActivatePerk()
+    {
+        if (perk.enabled && perk.PerkCanBeActivated)
+        {
+            perk.ActivatePerk();
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        ApplyDamage(1000);
     }
 }
